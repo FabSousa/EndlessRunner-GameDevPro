@@ -53,7 +53,7 @@ MonoBehaviour:
   countdownSeconds: 5
   minSpeed: 10
   maxSpeed: 100
-  maxSpeedDelay: 10
+  maxSpeedDelay: 100
   baseScoreMultiplier: 1
 --- !u!114 &3490472212628903674
 MonoBehaviour:
