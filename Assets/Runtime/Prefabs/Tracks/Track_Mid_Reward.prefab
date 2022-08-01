@@ -145,7 +145,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8867859678219359, guid: 6f4192bd67111cb4bbc5e7787f58a8fb, type: 3}
       propertyPath: pickupSpawners.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8867859678219359, guid: 6f4192bd67111cb4bbc5e7787f58a8fb, type: 3}
       propertyPath: pickupSpawners.Array.data[0]

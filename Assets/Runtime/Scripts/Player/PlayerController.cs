@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpLerpSpeed = 10;
 
     [Header("Roll")]
-
     [SerializeField] private float rollDistanceZ = 5;
     [SerializeField] private Collider regularCollider;
     [SerializeField] private Collider rollCollider;
