@@ -73,6 +73,8 @@ public class GameMode : MonoBehaviour
 
     public void OnGameOver()
     {
+        player.Die();
+        playerAnimationController.Die();
         Speed = 0;
         isGameRunning = false;
         StartCoroutine(ReloadGameCoroutine());

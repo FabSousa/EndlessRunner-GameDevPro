@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Pickups : MonoBehaviour
+public class Pickups : MonoBehaviour, ICollide
 {
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private GameObject cherryRender;
@@ -21,9 +21,9 @@ public class Pickups : MonoBehaviour
         cherryRender.transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Collide(Collider collider, GameMode gameMode)
     {
-        if(audioClip != null) AudioUtility.PlayAudioCue(audioSource, audioClip);
+        if (audioClip != null) AudioUtility.PlayAudioCue(audioSource, audioClip);
 
         GameMode.CherryCount++;
 

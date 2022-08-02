@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : MonoBehaviour, ICollide
 {
     [SerializeField] private DecorationSpawner[] decorationSpawners;
 
@@ -46,5 +46,11 @@ public class Obstacle : MonoBehaviour
             }
         }
         return minDistDecoration;
+    }
+
+    public void Collide(Collider collider, GameMode gameMode)
+    {
+        PlayCollisionFeedback(collider);
+        gameMode.OnGameOver();
     }
 }

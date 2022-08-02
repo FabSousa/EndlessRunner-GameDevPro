@@ -48,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decorationSpawners:
   - {fileID: 9189877212899112184}
-  animationController: {fileID: 8111565097663390713, guid: 5e406211d5a121742a74faa2f14e205c, type: 3}
-  animator: {fileID: 4512017798941739651, guid: 50e174eeb87cce442afb809868d0fb6a, type: 3}
+  playerController: {fileID: 1039976784133768168, guid: 740e8ed84f438b24ca8b6f85b7659234, type: 3}
+  animationController: {fileID: 1039976784133768174, guid: 740e8ed84f438b24ca8b6f85b7659234, type: 3}
+  gameMode: {fileID: 5473261710550771336, guid: 13e6af26070c6914283530aa501293e8, type: 3}
   movSpeed: 1
 --- !u!65 &3346502430661264127
 BoxCollider:

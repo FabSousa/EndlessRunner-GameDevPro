@@ -7,8 +7,6 @@ public class MovingObstacle : Obstacle
     [SerializeField] private float movSpeed = 1;
     private float positionT = 0;
     private float laneDistanceX = 2;
-    
-    private Animator animator;
 
     void Update()
     {
@@ -23,7 +21,5 @@ public class MovingObstacle : Obstacle
     private void OnTriggerEnter(Collider collider)
     {
         movSpeed = 0;
-
-        
     }
 }
