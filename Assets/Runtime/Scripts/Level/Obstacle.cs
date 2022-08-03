@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour, ICollide
         }
     }
 
-    public void PlayCollisionFeedback(Collider collider)
+    public virtual void Die(Collider collider)
     {
         ObstacleDecoration decorationHit = FindDecorationForCollider(collider);
         if (decorationHit != null)
@@ -50,7 +50,7 @@ public class Obstacle : MonoBehaviour, ICollide
 
     public void Collide(Collider collider, GameMode gameMode)
     {
-        PlayCollisionFeedback(collider);
+        Die(collider);
         gameMode.OnGameOver();
     }
 }

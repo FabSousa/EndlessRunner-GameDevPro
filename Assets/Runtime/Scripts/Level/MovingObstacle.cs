@@ -18,8 +18,9 @@ public class MovingObstacle : Obstacle
         transform.position = pos;
     }
 
-    private void OnTriggerEnter(Collider collider)
+    public override void Die(Collider collider)
     {
-        movSpeed = 0;
+        base.Die(collider);
+        enabled = false;
     }
 }

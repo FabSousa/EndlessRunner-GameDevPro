@@ -11,7 +11,7 @@ public class ObstacleDecoration : MonoBehaviour
     private AudioSource audioSource;
     private AudioSource AudioSource => audioSource == null ? audioSource = GetComponent<AudioSource>() : audioSource;
 
-    public void PlayCollisionFeedback()
+    public virtual void PlayCollisionFeedback()
     {
         AudioUtility.PlayAudioCue(AudioSource, collisionAudio);
         if (collisionAnimation != null)

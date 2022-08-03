@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleAnimationController : MonoBehaviour
+public class ObstacleAnimationController : ObstacleDecoration
 {
-    private Animator animator;
+    [SerializeField] private Animator animator;
 
-    private void Awake()
+    public override void PlayCollisionFeedback()
     {
-        animator = GetComponentInChildren<Animator>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
+        base.PlayCollisionFeedback();
         //TODO: String pura
         animator.SetTrigger("Death");
     }
+
 }

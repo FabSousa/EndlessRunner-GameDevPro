@@ -9,6 +9,6 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ICollide collide = other.GetComponent<ICollide>();
-        collide.Collide(other, gameMode);
+        if (collide != null) collide.Collide(other, gameMode);
     }
 }
