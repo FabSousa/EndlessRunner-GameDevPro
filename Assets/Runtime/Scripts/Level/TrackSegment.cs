@@ -20,4 +20,29 @@ public class TrackSegment : MonoBehaviour
     public ObstacleSpawner[] ObstacleSpawners => obstacleSpawners;
     public DecorationSpawner DecorationSpawner => decorationSpawner;
     public PickupSpawner[] PickupSpawners => pickupSpawners;
+
+    [Header("Pickups Parameters")]
+    [Range(0, 1)]
+    [SerializeField] private float pickupSpawnChance = 0.3f;
+    [SerializeField] private float additionalLineChance = 0.1f;
+
+    private Vector3[] skipPositions;
+
+    public void SpawnPickupLines()
+    {
+        foreach (var pickupSpawner in pickupSpawners)
+        {
+            if (Random.value <= pickupSpawnChance)
+            {
+                Vector3[] skipPositions = new Vector3[obstacleSpawners.Length];
+                for (int i = 0; i < skipPositions.Length; i++)
+                {
+                    skipPositions[i] = obstacleSpawners[i].transform.position;
+                }
+
+                pickupSpawner.SpawnPickups(skipPositions);
+                if (Random.value > additionalLineChance) break;
+            }
+        }
+    }
 }

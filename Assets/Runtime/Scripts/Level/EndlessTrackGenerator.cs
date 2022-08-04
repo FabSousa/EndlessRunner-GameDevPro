@@ -24,9 +24,6 @@ public class EndlessTrackGenerator : MonoBehaviour
     [SerializeField] private int minRewardTrackCount = 1;
     [SerializeField] private int maxRewardTrackCount = 3;
 
-    [Header("Pickups Parameters")]
-    [Range(0, 1)]
-    [SerializeField] private float pickupSpawnChance = 0.75f;
 
     private List<TrackSegment> currentSegments = new List<TrackSegment>();
 
@@ -128,13 +125,7 @@ public class EndlessTrackGenerator : MonoBehaviour
 
         trackInstance.DecorationSpawner.SpawnDecorations();
 
-        foreach(var pickupSpawner in trackInstance.PickupSpawners)
-        {
-            if(Random.value <= pickupSpawnChance)
-            {
-                pickupSpawner.SpawnPickups();
-            }
-        }
+        trackInstance.SpawnPickupLines();
 
         currentSegments.Add(trackInstance);
 

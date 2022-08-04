@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class PickupSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] pickupOptions;
+    [SerializeField] private Pickups pickupPref;
+    [SerializeField] private Transform start;
+    [SerializeField] private Transform end;
+    [SerializeField] private float spaceBetweenPickups = 2;
+    [Range(0,1)] [SerializeField] private float chanceToSkipPosition = 0.1f;
 
-    private GameObject currentPickup;
-
-    public void SpawnPickups()
+    public void SpawnPickups(Vector3[] skipPositions)
     {
-        GameObject prefab = pickupOptions[Random.Range(0, pickupOptions.Length)];
-        currentPickup = Instantiate(prefab, transform);
-        currentPickup.transform.localPosition = Vector3.zero;
-        currentPickup.transform.rotation = Quaternion.identity;
+        Vector3 currentSpawnPosition = start.position;
+        while (currentSpawnPosition.z < end.position.z)
+        {
+            if (!ShouldSkipPosition(currentSpawnPosition, skipPositions))
+            {
+                Pickups pickup = Instantiate(pickupPref, currentSpawnPosition, Quaternion.identity, transform);
+            }
+            currentSpawnPosition.z += spaceBetweenPickups;
+        }
+    }
+
+    private bool ShouldSkipPosition(Vector3 currentSpawnPosition, Vector3[] skipPositions)
+    {
+        foreach (var skipPosition in skipPositions)
+        {
+            float skipStart = skipPosition.z - spaceBetweenPickups * 0.5f;
+            float skipEnd = skipPosition.z + spaceBetweenPickups * 0.5f;
+
+            if(currentSpawnPosition.z >= skipStart && currentSpawnPosition.z <= skipEnd)
+            {
+                return true;
+            }
+        }
+        if (Random.value < chanceToSkipPosition) return true;
+        return false;
     }
 }
