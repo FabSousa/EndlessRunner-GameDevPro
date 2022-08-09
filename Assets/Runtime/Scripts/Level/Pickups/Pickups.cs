@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Pickups : MonoBehaviour, ICollide
+public abstract class Pickups : MonoBehaviour, ICollide
 {
     [SerializeField] private AudioClip audioClip;
-    [SerializeField] private GameObject cherryRender;
+    [SerializeField] private GameObject PickupRender;
     private AudioSource audioSource;
 
-    private float rotationSpeed = 100;
+    private bool wasPickedUp = false;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        cherryRender.transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
-    }
-
     public void Collide(Collider collider, GameMode gameMode)
     {
         if (audioClip != null) AudioUtility.PlayAudioCue(audioSource, audioClip);
 
-        GameMode.CherryCount++;
+        if(!wasPickedUp)
+        {
+            OnPickedUp();
+            wasPickedUp = true;
+        }
 
-        cherryRender.SetActive(false);
+        PickupRender.SetActive(false);
 
         Destroy(gameObject, audioClip.length);
     }
+
+    protected abstract void OnPickedUp();
 }

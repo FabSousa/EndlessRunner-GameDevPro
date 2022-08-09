@@ -7,46 +7,32 @@ public class GameMode : MonoBehaviour
     [Header("References")]
     [SerializeField] PlayerController player;
     [SerializeField] PlayerAnimationController playerAnimationController;
-
     [SerializeField] private MainHUD mainHud;
-
     [SerializeField] private MusicPlayer musicPlayer;
-
     [SerializeField] private Animator animator;
-
-
 
     [Header("Variables")]
     [SerializeField] private float reloadGameDelay = 3;
-
-    [SerializeField]
-    [Range(0, 5)]
-    private int countdownSeconds = 5;
-
-    [SerializeField]
-    [Min(10)]
-    private float minSpeed = 10;
-    [SerializeField]
-    [Min(10)]
-    private float maxSpeed = 100;
-    [SerializeField]
-    [Min(0)]
-    private float maxSpeedDelay = 10;
-
-    public float Speed { get; private set; }
-
+    [SerializeField] [Range(0, 5)] private int countdownSeconds = 5;
+    [SerializeField] [Min(10)] private float minSpeed = 10;
+    [SerializeField] [Min(10)] private float maxSpeed = 100;
+    [SerializeField] [Min(0)] private float maxSpeedDelay = 10;
     [SerializeField] private float baseScoreMultiplier = 1;
-    private float score;
-
-    public float TravelledDistance => player.transform.position.z - player.InitialPosition.z;
 
     private float startGameTime;
 
-    private bool isGameRunning = false;
+    public float Speed { get; private set; }
 
+    private float score;
     public int Score => Mathf.RoundToInt(score);
 
     public static int CherryCount { get; set; } = 0;
+    public static int PeanutCount { get; set; } = 0;
+    
+
+    public float TravelledDistance => player.transform.position.z - player.InitialPosition.z;
+
+    private bool isGameRunning = false;
 
     private void Awake()
     {
@@ -113,5 +99,6 @@ public class GameMode : MonoBehaviour
         yield return new WaitForSeconds(reloadGameDelay);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         CherryCount = 0;
+        PeanutCount = 0;
     }
 }

@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class PickupSpawner : MonoBehaviour
 {
-    [SerializeField] private Pickups pickupPref;
+    [Header("References")]
+    [SerializeField] private Pickups[] commonPickups;
+    [SerializeField] private Pickups[] rarePickups;
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
+
+    [Header("Variables")]
     [SerializeField] private float spaceBetweenPickups = 2;
     [Range(0,1)] [SerializeField] private float chanceToSkipPosition = 0.1f;
+    [Range(0, 1)][SerializeField] private float chanceToSpawnRarePickup = 0.1f;
 
     public void SpawnPickups(Vector3[] skipPositions)
     {
+        Pickups pickup;
         Vector3 currentSpawnPosition = start.position;
         while (currentSpawnPosition.z < end.position.z)
         {
             if (!ShouldSkipPosition(currentSpawnPosition, skipPositions))
             {
-                Pickups pickup = Instantiate(pickupPref, currentSpawnPosition, Quaternion.identity, transform);
+                if(Random.value < chanceToSpawnRarePickup)
+                    pickup = Instantiate(rarePickups[Random.Range(0, rarePickups.Length)], currentSpawnPosition, Quaternion.identity, transform);
+                else
+                    pickup = Instantiate(commonPickups[Random.Range(0, commonPickups.Length)], currentSpawnPosition, Quaternion.identity, transform);
             }
             currentSpawnPosition.z += spaceBetweenPickups;
         }

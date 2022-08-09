@@ -7,6 +7,7 @@ public class SaveGame : MonoBehaviour
     public void Save()
     {
         Cherries();
+        Peanuts();
         LastScore();
         HighScore();
     }
@@ -14,6 +15,11 @@ public class SaveGame : MonoBehaviour
     private void Cherries()
     {
         PlayerPrefs.SetInt(GameConsts.Cherries, PlayerPrefs.GetInt(GameConsts.Cherries) + GameMode.CherryCount);
+    }
+
+    private void Peanuts()
+    {
+        PlayerPrefs.SetInt(GameConsts.Peanuts, PlayerPrefs.GetInt(GameConsts.Peanuts) + GameMode.PeanutCount);
     }
 
     private void LastScore()

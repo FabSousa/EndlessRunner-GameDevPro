@@ -108,8 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d752209e2cb6954780b8a60ee2f6679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupPref: {fileID: 1692766029363800391, guid: 89d2b901c5c877743ad19349005a8f9c, type: 3}
+  commonPickups:
+  - {fileID: 2358508415383053102, guid: 7d3377ea1a8f08c4f9b11af2efb8785f, type: 3}
+  rarePickups:
+  - {fileID: 6720884491433551720, guid: 641a0130a41004e42a71024ab9427779, type: 3}
   start: {fileID: 2446742837603105625}
   end: {fileID: 8521071226669846307}
   spaceBetweenPickups: 2.5
   chanceToSkipPosition: 0.1
+  chanceToSpawnRarePickup: 0.1

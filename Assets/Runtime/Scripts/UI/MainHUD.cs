@@ -19,7 +19,9 @@ public class MainHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private TextMeshProUGUI countdownText;
     [SerializeField] private TextMeshProUGUI cherryCountText;
+    [SerializeField] private TextMeshProUGUI peanutCountText;
     [SerializeField] private TextMeshProUGUI totalCherries;
+    [SerializeField] private TextMeshProUGUI totalPeanuts;
     [SerializeField] private TextMeshProUGUI lastScore;
     [SerializeField] private TextMeshProUGUI highScore;
 
@@ -35,7 +37,9 @@ public class MainHUD : MonoBehaviour
         scoreText.text = $"Score : {gameMode.Score}";
         distanceText.text = $"{Mathf.RoundToInt(gameMode.TravelledDistance)}m";
         cherryCountText.text = GameMode.CherryCount.ToString();
+        peanutCountText.text = GameMode.PeanutCount.ToString();
         totalCherries.text = PlayerPrefs.GetInt(GameConsts.Cherries).ToString();
+        totalPeanuts.text = PlayerPrefs.GetInt(GameConsts.Peanuts).ToString();
         lastScore.text = PlayerPrefs.GetInt(GameConsts.LastScore).ToString();
         highScore.text = PlayerPrefs.GetInt(GameConsts.HighScore).ToString();
     }
