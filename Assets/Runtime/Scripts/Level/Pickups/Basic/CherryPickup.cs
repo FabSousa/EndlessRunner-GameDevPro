@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CherryPickup : Pickups
 {
-    protected override void OnPickedUp()
+    protected override void OnPickedUp(in CollisionInfo collisionInfo)
     {
         GameMode.CherryCount++;
     }

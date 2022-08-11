@@ -48,9 +48,9 @@ public class Obstacle : MonoBehaviour, ICollide
         return minDistDecoration;
     }
 
-    public void Collide(Collider collider, GameMode gameMode)
+    public void Collide(in CollisionInfo collisionInfo)
     {
-        Die(collider);
-        gameMode.OnGameOver();
+        Die(collisionInfo.Collider);
+        collisionInfo.GameMode.OnGameOver();
     }
 }

@@ -279,10 +279,6 @@ PrefabInstance:
       propertyPath: gameMode
       value: 
       objectReference: {fileID: 120073793}
-    - target: {fileID: 4521158070636043749, guid: 740e8ed84f438b24ca8b6f85b7659234, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -1450324270061248655, guid: c07e61c505e4dfe4b96c2d76721cda45, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 740e8ed84f438b24ca8b6f85b7659234, type: 3}
 --- !u!1 &488100656
@@ -809,7 +805,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1460047729 stripped
 RectTransform:
@@ -1000,7 +996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5473261710550771339, guid: 13e6af26070c6914283530aa501293e8, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5473261710550771339, guid: 13e6af26070c6914283530aa501293e8, type: 3}
       propertyPath: m_LocalPosition.x

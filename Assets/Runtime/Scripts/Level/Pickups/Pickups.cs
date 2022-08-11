@@ -16,20 +16,25 @@ public abstract class Pickups : MonoBehaviour, ICollide
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void Collide(Collider collider, GameMode gameMode)
+    public void Collide(in CollisionInfo collisionInfo)
     {
         if (audioClip != null) AudioUtility.PlayAudioCue(audioSource, audioClip);
 
         if(!wasPickedUp)
         {
-            OnPickedUp();
+            OnPickedUp(collisionInfo);
             wasPickedUp = true;
         }
 
         PickupRender.SetActive(false);
 
-        Destroy(gameObject, audioClip.length);
+        DestroyPickup();
     }
 
-    protected abstract void OnPickedUp();
+    protected abstract void OnPickedUp(in CollisionInfo collisionInfo);
+
+    protected virtual void DestroyPickup()
+    {
+        Destroy(gameObject, audioClip.length);
+    }
 }

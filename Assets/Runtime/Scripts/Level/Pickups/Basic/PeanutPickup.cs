@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PeanutPickup : Pickups
 {
-    protected override void OnPickedUp()
+    protected override void OnPickedUp(in CollisionInfo collisionInfo)
     {
         GameMode.PeanutCount++;
     }

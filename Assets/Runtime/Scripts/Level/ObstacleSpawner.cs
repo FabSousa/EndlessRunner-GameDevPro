@@ -8,6 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnObstacle()
     {
+        if(obstaclePrefabOptions.Length == 0) return;
         Obstacle prefab = obstaclePrefabOptions[Random.Range(0, obstaclePrefabOptions.Length)];
         currentObstacle = Instantiate(prefab, transform);
         currentObstacle.transform.localPosition = Vector3.zero;

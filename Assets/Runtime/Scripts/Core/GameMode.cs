@@ -13,11 +13,10 @@ public class GameMode : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField] private float reloadGameDelay = 3;
-    [SerializeField] [Range(0, 5)] private int countdownSeconds = 5;
-    [SerializeField] [Min(10)] private float minSpeed = 10;
-    [SerializeField] [Min(10)] private float maxSpeed = 100;
-    [SerializeField] [Min(0)] private float maxSpeedDelay = 10;
-    [SerializeField] private float baseScoreMultiplier = 1;
+    [SerializeField][Range(0, 5)] private int countdownSeconds = 5;
+    [SerializeField][Min(10)] private float minSpeed = 10;
+    [SerializeField][Min(10)] private float maxSpeed = 100;
+    [SerializeField][Min(0)] private float maxSpeedDelay = 10;
 
     private float startGameTime;
 
@@ -25,6 +24,7 @@ public class GameMode : MonoBehaviour
 
     private float score;
     public int Score => Mathf.RoundToInt(score);
+    public static float ScoreMultiplier { get; set; } = 1;
 
     public static int CherryCount { get; set; } = 0;
     public static int PeanutCount { get; set; } = 0;
@@ -46,7 +46,7 @@ public class GameMode : MonoBehaviour
             float timePercent = (Time.time - startGameTime) / maxSpeedDelay;
             Speed = Mathf.Lerp(minSpeed, maxSpeed, timePercent);
 
-            score += baseScoreMultiplier * Speed * Time.deltaTime;
+            score += ScoreMultiplier * Speed * Time.deltaTime;
         }
     }
 

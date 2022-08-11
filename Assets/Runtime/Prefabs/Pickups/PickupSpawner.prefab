@@ -112,8 +112,11 @@ MonoBehaviour:
   - {fileID: 2358508415383053102, guid: 7d3377ea1a8f08c4f9b11af2efb8785f, type: 3}
   rarePickups:
   - {fileID: 6720884491433551720, guid: 641a0130a41004e42a71024ab9427779, type: 3}
+  powerups:
+  - {fileID: 4113617216375774132, guid: fb79f3379b286024ba4195df590c47b6, type: 3}
   start: {fileID: 2446742837603105625}
   end: {fileID: 8521071226669846307}
   spaceBetweenPickups: 2.5
   chanceToSkipPosition: 0.1
   chanceToSpawnRarePickup: 0.1
+  chanceToSpawnPowerup: 0.1
