@@ -81,7 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 4777a323670ccc845964e95ce750efc1, type: 3}
   PickupRender: {fileID: 1647766960660961339}
-  powerupDuration: 30
+  playerPowerups: {fileID: 3147068839808717958, guid: 740e8ed84f438b24ca8b6f85b7659234, type: 3}
+  powerupDuration: 5
 --- !u!1001 &1647766960661061275
 PrefabInstance:
   m_ObjectHideFlags: 0

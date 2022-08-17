@@ -114,6 +114,8 @@ MonoBehaviour:
   - {fileID: 6720884491433551720, guid: 641a0130a41004e42a71024ab9427779, type: 3}
   powerups:
   - {fileID: 4113617216375774132, guid: fb79f3379b286024ba4195df590c47b6, type: 3}
+  - {fileID: 8892338432527037326, guid: 451ba767323b0c84396a2f6861f95beb, type: 3}
+  - {fileID: 816918812188172394, guid: 109dadac7fb42b24a8c9157c763e7ba1, type: 3}
   start: {fileID: 2446742837603105625}
   end: {fileID: 8521071226669846307}
   spaceBetweenPickups: 2.5

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private GameMode gameMode;
-    [SerializeField] private GameObject powerupX2Particle;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +13,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Collider = other,
             GameMode = gameMode,
-            PowerupX2Particle = powerupX2Particle
+            Powerups = GetComponent<PlayerPowerups>(),
         });
     }
 }

@@ -6,7 +6,7 @@ public struct CollisionInfo
 {
     public Collider Collider;
     public GameMode GameMode;
-    public GameObject PowerupX2Particle;
+    public PlayerPowerups Powerups;
 }
 
 public interface ICollide

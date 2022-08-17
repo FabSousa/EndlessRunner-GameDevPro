@@ -20,19 +20,19 @@ public class GameMode : MonoBehaviour
 
     private float startGameTime;
 
-    public float Speed { get; private set; }
-
     private float score;
     public int Score => Mathf.RoundToInt(score);
     public static float ScoreMultiplier { get; set; } = 1;
 
     public static int CherryCount { get; set; } = 0;
     public static int PeanutCount { get; set; } = 0;
-    
 
+    public float Speed { get; private set; }
     public float TravelledDistance => player.transform.position.z - player.InitialPosition.z;
 
     private bool isGameRunning = false;
+
+    public bool CanDie { get; set; } = true;
 
     private void Awake()
     {
@@ -59,6 +59,7 @@ public class GameMode : MonoBehaviour
 
     public void OnGameOver()
     {
+        if(!CanDie) return;
         player.Die();
         playerAnimationController.Die();
         Speed = 0;

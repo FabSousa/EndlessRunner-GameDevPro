@@ -28,13 +28,8 @@ public abstract class Pickups : MonoBehaviour, ICollide
 
         PickupRender.SetActive(false);
 
-        DestroyPickup();
+        Destroy(gameObject, audioClip.length);
     }
 
     protected abstract void OnPickedUp(in CollisionInfo collisionInfo);
-
-    protected virtual void DestroyPickup()
-    {
-        Destroy(gameObject, audioClip.length);
-    }
 }

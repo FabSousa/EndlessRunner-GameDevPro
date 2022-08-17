@@ -12,12 +12,12 @@ public class PlayerController : MonoBehaviour
     private float horizontalSpeed;
     private float forwardSpeed;
 
+    [Header("Lane")]
     [SerializeField] private float laneDistanceX = 4;
 
     [Header("Jump")]
     [SerializeField] private float jumpDistanceZ = 5;
     [SerializeField] private float jumpHeightY = 2;
-
     [SerializeField] private float jumpLerpSpeed = 10;
 
     [Header("Roll")]
@@ -26,9 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider rollCollider;
 
     [Header("Save")]
-
     [SerializeField] private SaveGame saveGame;
-
 
     public Vector3 InitialPosition { get; private set; }
 
