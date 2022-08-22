@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerPowerups : MonoBehaviour
@@ -19,8 +20,10 @@ public class PlayerPowerups : MonoBehaviour
     [Header("Magnet")]
     [SerializeField] private GameObject magnetParticle;
     [SerializeField][Min(0)] private float magnetDuration;
+    [SerializeField][Min(0)] private Vector3 magnetRange = new Vector3(4, 1, 8);
+    [SerializeField][Min(0)] private float attractionSpeed = 50;
     private int magnetInstances = 0;
-
+    private bool isMagnetActive = false;
 
     public void PowerupX2(CollisionInfo collisionInfo)
     {
@@ -74,7 +77,7 @@ public class PlayerPowerups : MonoBehaviour
     private IEnumerator ActivatePowerupMagnet(CollisionInfo collisionInfo)
     {
         magnetParticle.SetActive(true);
-        Debug.Log("Magnet activate"); //Activate
+        isMagnetActive = true;
 
         magnetInstances++;
         yield return new WaitForSeconds(magnetDuration);
@@ -83,7 +86,24 @@ public class PlayerPowerups : MonoBehaviour
         if (magnetInstances == 0)
         {
             magnetParticle.SetActive(false);
-            Debug.Log("Magnet deactivate"); //Deactivate
+            isMagnetActive = false;
         }
+    }
+
+    private void Update()
+    {
+        if (isMagnetActive)
+        {
+            Collider[] colliders = Physics.OverlapBox(transform.position, magnetRange);
+            foreach (Collider c in colliders)
+            {
+                Pickups p = c.GetComponent<Pickups>();
+                if (p != null)
+                {
+                    c.transform.position = Vector3.MoveTowards(c.transform.position, transform.position, attractionSpeed * Time.deltaTime);
+                }
+            }
+        }
+        
     }
 }
