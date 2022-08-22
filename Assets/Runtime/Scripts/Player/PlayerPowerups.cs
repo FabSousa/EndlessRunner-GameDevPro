@@ -22,6 +22,8 @@ public class PlayerPowerups : MonoBehaviour
     [SerializeField][Min(0)] private float magnetDuration;
     [SerializeField][Min(0)] private Vector3 magnetRange = new Vector3(4, 1, 8);
     [SerializeField][Min(0)] private float attractionSpeed = 50;
+    private List<Pickups> pickupsToAtract = new List<Pickups>();
+    private Collider[] overlapResults = new Collider[20];
     private int magnetInstances = 0;
     private bool isMagnetActive = false;
 
@@ -94,16 +96,27 @@ public class PlayerPowerups : MonoBehaviour
     {
         if (isMagnetActive)
         {
-            Collider[] colliders = Physics.OverlapBox(transform.position, magnetRange);
-            foreach (Collider c in colliders)
+            int overlapCount = Physics.OverlapBoxNonAlloc(transform.position, magnetRange, overlapResults);
+            for (int i = 0; i < overlapCount; i++)
             {
-                Pickups p = c.GetComponent<Pickups>();
-                if (p != null)
+                Pickups pickup = overlapResults[i].GetComponent<Pickups>();
+                if(pickup != null && !pickupsToAtract.Contains(pickup))
                 {
-                    c.transform.position = Vector3.MoveTowards(c.transform.position, transform.position, attractionSpeed * Time.deltaTime);
+                    pickupsToAtract.Add(pickup);
                 }
             }
+
+            foreach(Pickups pickups in pickupsToAtract)
+            {
+                if(pickups != null)
+                    pickups.transform.position = Vector3.MoveTowards(pickups.transform.position, transform.position, attractionSpeed * Time.deltaTime);
+            }
         }
-        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, magnetRange);
     }
 }

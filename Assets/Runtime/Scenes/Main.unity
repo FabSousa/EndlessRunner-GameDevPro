@@ -289,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3147068839808717958, guid: 740e8ed84f438b24ca8b6f85b7659234, type: 3}
       propertyPath: attractionSpeed
-      value: 54.43
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 740e8ed84f438b24ca8b6f85b7659234, type: 3}
