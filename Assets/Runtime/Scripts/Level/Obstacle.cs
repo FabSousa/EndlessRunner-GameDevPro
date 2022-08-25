@@ -1,10 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour, ICollide
 {
     [SerializeField] private DecorationSpawner[] decorationSpawners;
-
     private List<ObstacleDecoration> obstacleDecorations = new List<ObstacleDecoration>();
 
     public void SpawnDecorations()
@@ -50,7 +50,7 @@ public class Obstacle : MonoBehaviour, ICollide
 
     public void Collide(in CollisionInfo collisionInfo)
     {
+        collisionInfo.Player.Die();
         Die(collisionInfo.Collider);
-        collisionInfo.GameMode.OnGameOver();
     }
 }

@@ -57,7 +57,7 @@ public class PlayerPowerups : MonoBehaviour
     private IEnumerator ActivatePowerupStar(CollisionInfo collisionInfo)
     {
         starParticle.SetActive(true);
-        collisionInfo.GameMode.CanDie = false;
+        collisionInfo.Player.CanDie = false;
 
         starInstances++;
         yield return new WaitForSeconds(starDuration);
@@ -66,7 +66,7 @@ public class PlayerPowerups : MonoBehaviour
         if (starInstances == 0)
         {
             starParticle.SetActive(false);
-            collisionInfo.GameMode.CanDie = true;
+            collisionInfo.Player.CanDie = true;
         }
     }
 

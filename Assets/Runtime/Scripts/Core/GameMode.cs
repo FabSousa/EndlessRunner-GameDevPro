@@ -32,11 +32,15 @@ public class GameMode : MonoBehaviour
 
     private bool isGameRunning = false;
 
-    public bool CanDie { get; set; } = true;
-
     private void Awake()
     {
         SetWaitForStartGameState();
+        player.PlayerDeathEvent += OnGameOver;
+    }
+
+    private void OnDestroy()
+    {
+        player.PlayerDeathEvent -= OnGameOver;
     }
 
     private void Update()
@@ -59,9 +63,6 @@ public class GameMode : MonoBehaviour
 
     public void OnGameOver()
     {
-        if(!CanDie) return;
-        player.Die();
-        playerAnimationController.Die();
         Speed = 0;
         isGameRunning = false;
         StartCoroutine(ReloadGameCoroutine());

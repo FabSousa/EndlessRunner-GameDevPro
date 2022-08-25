@@ -12,7 +12,7 @@ public class PlayerCollision : MonoBehaviour
         if (collide != null) collide.Collide(new CollisionInfo
         {
             Collider = other,
-            GameMode = gameMode,
+            Player = GetComponent<PlayerController>(),
             Powerups = GetComponent<PlayerPowerups>(),
         });
     }

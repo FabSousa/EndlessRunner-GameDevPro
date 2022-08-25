@@ -29,26 +29,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SaveGame saveGame;
 
     public Vector3 InitialPosition { get; private set; }
-
     float targetPositionX;
 
-    public bool IsJumping { get; private set; }
-
+    private float jumpStartZ;
     private float rollStartZ;
+
+    public bool IsJumping { get; private set; }
     public bool IsRolling { get; private set; }
 
     public float JumpDuration => jumpDistanceZ / forwardSpeed;
-
     public float RollDuration => rollDistanceZ / forwardSpeed;
-    float jumpStartZ;
 
     private float LeftLaneX => InitialPosition.x - laneDistanceX;
     private float RightLaneX => InitialPosition.x + laneDistanceX;
 
+    public bool CanDie { get; set; } = true;
     private bool isDead = false;
 
     private bool CanJump => !IsJumping && !isDead;
     private bool CanRoll => !IsRolling && !isDead;
+
+    public event Action PlayerDeathEvent;
 
     void Awake()
     {
@@ -175,11 +176,15 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        saveGame.Save();
+        if(!CanDie) return;
+        PlayerDeathEvent?.Invoke();
         isDead = true;
         StopRoll();
         StopJump();
         regularCollider.enabled = false;
         rollCollider.enabled = false;
+
+        //TODO: Refazer sistema de save
+        saveGame.Save();
     }
 }

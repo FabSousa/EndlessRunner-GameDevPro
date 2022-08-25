@@ -5,7 +5,7 @@ using UnityEngine;
 public struct CollisionInfo
 {
     public Collider Collider;
-    public GameMode GameMode;
+    public PlayerController Player;
     public PlayerPowerups Powerups;
 }
 

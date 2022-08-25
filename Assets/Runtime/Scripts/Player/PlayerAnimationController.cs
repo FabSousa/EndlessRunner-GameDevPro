@@ -11,6 +11,12 @@ public class PlayerAnimationController : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<PlayerController>();
+        player.PlayerDeathEvent += Die;
+    }
+
+    private void OnDestroy()
+    {
+        player.PlayerDeathEvent += Die;
     }
 
     private void Update()
